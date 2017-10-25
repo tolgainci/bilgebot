@@ -55,7 +55,7 @@ namespace Bilge_Assistant
         public Form2()
         {
             InitializeComponent();
-            this.Text = "Bilge Assistant";
+            this.Text = "BilgeBot";
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
@@ -128,7 +128,7 @@ namespace Bilge_Assistant
             Painter.bot = false;
             LblRunornot.Text = "Paused";
             LblRunornot.ForeColor = Color.Red;
-            this.Text = "Bilge Assistant";
+            this.Text = "BilgeBot";
             Go = false;
         }
 
@@ -140,7 +140,7 @@ namespace Bilge_Assistant
             Painter.bot = true;
             LblRunornot.Text = "Running";
             LblRunornot.ForeColor = Color.Green;
-            this.Text = "Bilge Assistant";
+            this.Text = "BilgeBot";
             Go = true;
             painter = new Thread(new ThreadStart(P.Paint));
             painter.Start();
