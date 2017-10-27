@@ -1,6 +1,6 @@
 ﻿namespace Bilge_Assistant
 {
-    partial class Form2
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -64,18 +64,7 @@
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = false;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 180000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 90000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
+            //
             // LblRunornot
             // 
             this.LblRunornot.AutoSize = true;

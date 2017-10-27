@@ -17,7 +17,7 @@ using System.Security.Cryptography;
 
 namespace Bilge_Assistant
 {
-    public partial class Form2 : Form
+    public partial class Form1 : Form
     {
         [DllImport("user32")]
         internal static extern IntPtr GetDC(IntPtr hwnd);
@@ -44,37 +44,16 @@ namespace Bilge_Assistant
 
         public static int left;
         public static int top;
-        public static String OceanName;
-        public static String PirateName;
-        public static String username;
-        public static String password;
         public static Boolean Go = false;
         public static Boolean bot = false;
         Painter P = new Painter();
         public Thread painter = null;
-        public Form2()
+        public Form1()
         {
             InitializeComponent();
             this.Text = "BilgeBot";
         }
 
-        private void timer1_Tick_1(object sender, EventArgs e)
-        {
-            if (ValidateMe() == false)
-                Sharing();
-        }
-
-        static void Sharing()
-        {
-            MessageBox.Show("Sharing accounts is not permitted.", "Account Sharing Detected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            Application.Exit();
-        }
-
-        static void Quit()
-        {
-            MessageBox.Show("Please make sure you type your username and password in correctly. If you are sure you meet all the requirements please login to your account on GlobalInfection so that our servers can update your credentials then try again.", "Permission Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            Application.Exit();
-        }
 
         public static void ShutDown()
         {
@@ -82,42 +61,6 @@ namespace Bilge_Assistant
             Application.Exit();
         }
 
-        static Boolean ValidateMe()
-        {
-            return legit();
-        }
-
-        static Boolean legit()
-        {
-                return true;
-        }
-
-        static Boolean isVip()
-        {
-                return true;
-        }
-
-        static String doCrypt(String toEncrypt)
-        {
-            Byte[] originalBytes;
-            Byte[] encodedBytes;
-            MD5 md5;
-            SHA1 sha1;
-            md5 = new MD5CryptoServiceProvider();
-            sha1 = new SHA1CryptoServiceProvider();
-            originalBytes = ASCIIEncoding.Default.GetBytes(toEncrypt);
-            encodedBytes = sha1.ComputeHash(originalBytes);
-            String hash = BitConverter.ToString(encodedBytes).Replace("-", "").ToLower();
-            originalBytes = ASCIIEncoding.Default.GetBytes(hash);
-            encodedBytes = md5.ComputeHash(originalBytes);
-            hash = BitConverter.ToString(encodedBytes).Replace("-", "").ToLower();
-            return hash;
-        }
-
-        static Boolean compareHash(String password, String hash)
-        {
-                return true;
-        }
 
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -367,8 +310,8 @@ namespace Bilge_Assistant
 
         public void ClickBox(IntPtr hwnd, int left, int top)
         {
-            Form2.left = left;
-            Form2.top = top;
+            Form1.left = left;
+            Form1.top = top;
             if (bot == true || Painter.bot == true)
             {
                 SetMouse(hwnd, 0x72 + (0x2d * (left - 1)), 0x61 + (0x2d * (top - 1)));
@@ -735,11 +678,6 @@ namespace Bilge_Assistant
 
         }
 
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            if (isVip() == false)
-                Sharing();
-        }
     }
 
     class Painter
@@ -747,7 +685,7 @@ namespace Bilge_Assistant
         public static bool bot = false;
         public void Paint()
         {
-            Form2 f = new Form2();
+            Form1 f = new Form1();
             Process[] processlist = Process.GetProcesses();
             String[] process = null;
             process = new string[200];
@@ -763,21 +701,12 @@ namespace Bilge_Assistant
                 }
                 i++;
             }
-            Form3 ee = new Form3();
-            // ee.Show();
-            // Graphics g = ee.CreateGraphics();
-            Form2.RECT r;
-            Form2.GetWindowRect(handle, out r);
-            ee.SetDesktopLocation(r.X1, r.X2);
-            // Pen p = new Pen(Color.Red, 2);
-            while (Form2.Go == true)
+            Form1.RECT r;
+            Form1.GetWindowRect(handle, out r);
+            while (Form1.Go == true)
             {
                 Thread.Sleep(200);
                 f.SimulateMove(handle);
-                // Rectangle myRect = new Rectangle(((0x72 + (0x2d * (Form2.left - 1))) - 20), ((0x61 + (0x2d * (Form2.top - 1)))) - 25, 85, 41);
-                // g.Clear(Color.White);
-                ee.SetDesktopLocation(r.X1, r.Y1);
-                // g.DrawRectangle(p, myRect);
             }
         }
     };
