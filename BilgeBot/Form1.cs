@@ -54,15 +54,6 @@ namespace Bilge_Assistant
             this.Text = "BilgeBot";
         }
 
-
-        public static void ShutDown()
-        {
-            Go = false;
-            Application.Exit();
-        }
-
-
-
         private void btnStop_Click(object sender, EventArgs e)
         {
             btnStart.Enabled = true;
@@ -71,7 +62,6 @@ namespace Bilge_Assistant
             Painter.bot = false;
             LblRunornot.Text = "Paused";
             LblRunornot.ForeColor = Color.Red;
-            this.Text = "BilgeBot";
             Go = false;
         }
 
@@ -83,7 +73,6 @@ namespace Bilge_Assistant
             Painter.bot = true;
             LblRunornot.Text = "Running";
             LblRunornot.ForeColor = Color.Green;
-            this.Text = "BilgeBot";
             Go = true;
             painter = new Thread(new ThreadStart(P.Paint));
             painter.Start();
